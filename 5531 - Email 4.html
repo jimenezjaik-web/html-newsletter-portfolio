@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+	<meta charset="utf-8"> <!-- utf-8 works for most cases -->
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="x-apple-disable-message-reformatting">
+	<title>IATA CargoIS</title>
+	
+  <meta name="color-scheme" content="light dark">
+  <meta name="supported-color-schemes" content="light dark">
+  
+  <style>
+:root {
+color-scheme: light dark;
+supported-color-schemes: light dark;
+}
+@media (prefers-color-scheme: dark) {
+      
+        .body {
+    background-color: #172430 !important;
+    color: #ffffff !important;
+  }
+        
+        a {
+        color: #F9C732 !important;
+      }
+
+      a:hover {
+        color: #EF4632 !important;
+      }
+
+      .dark-mode-bg {
+        background: #000000 !important;
+        background-color: #000000 !important;
+      }
+    
+      .dark-mode-blue-bg {
+        background: #1e32fa !important;
+        background-color: #1e32fa !important;
+      }
+
+      .dark-mode-wrapper-header,
+      .dark-mode-wrapper-header table {
+        background: #000000 !important;
+        background-color: #000000 !important;
+      }
+
+      .dark-mode-wrapper,
+      .dark-mode-wrapper table {
+        background: #000000 !important;
+        background-color: #000000 !important;
+      }
+
+      .dm-call-out-section,
+      .dm-call-out-section table {
+        background: #171717 !important;
+        background-color: #171717 !important;
+      }
+
+      .dm-call-out-section-col table table table {
+        background: #171717 !important;
+        background-color: #171717 !important;
+      }
+
+      .dm-white-text,
+      .dm-white-text div {
+        color: #ffffff !important;
+      }
+
+      .dm-yellow-text,
+      .dm-yellow-text div {
+        color: #F9C732 !important;
+      }
+    
+        .dm-red-text,
+        .dm-red-text div {
+        color: #f04632 !important;
+        }
+
+      .dm-iata-button a {
+        color: #ffffff !important;
+      }
+
+      .dm-call-out-text {
+        background: #171717 !important;
+        color: #ffffff !important;
+      }
+    
+    
+    .dm-yellow-bg,
+      .dm-footer-bg table {
+        background: #F9C732 !important;
+        background-color: #F9C732 !important;
+      }
+    
+      .dm-footer-bg,
+      .dm-footer-bg table {
+        background: #171717 !important;
+        background-color: #171717 !important;
+      }
+    
+    .link-color-bg {
+        color: #1E32FA !important;
+      }
+
+      .link-color-bg:hover {
+        color: #ffffff !important;
+      }
+    
+        .lightimage {
+        display: none !important;
+        }
+        .darkimageWrapper,
+        .darkimage {
+        display: block !important;
+        }
+    }
+      
+    </style>
+  
+  
+
+	
+
+	<!-- CSS Reset : START -->
+	<style>
+		/* What it does: Remove spaces around the email design added by some email clients. */
+		/* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+		html, body {
+			margin: 0 auto !important;
+			padding: 0 !important;
+			height: 100% !important;
+			width: 100% !important;
+		}
+
+		/* What it does: Stops email clients resizing small text. */
+		* {
+			-ms-text-size-adjust: 100%;
+			-webkit-text-size-adjust: 100%;
+		}
+
+		/* What it does: Centers email on Android 4.4 */
+		div[style*="margin: 16px 0"] {
+			margin: 0 !important;
+		}
+
+		/* What it does: Stops Outlook from adding extra spacing to tables. */
+		table, td {
+			mso-table-lspace: 0pt !important;
+			mso-table-rspace: 0pt !important;
+		}
+
+		/* What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. */
+		table {
+			border-spacing: 0 !important;
+			border-collapse: collapse !important;
+			table-layout: fixed !important;
+			margin: 0 auto !important;
+		}
+		table table table {
+			table-layout: auto;
+		}
+		th{
+			font-weight: normal;
+		}
+
+		a{
+			color: #1e32fa;
+		}
+
+		/* What it does: Uses a better rendering method when resizing images in IE. */
+		img{
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+        }
+
+		/* What it does: A work-around for email clients meddling in triggered links. */
+		*[x-apple-data-detectors],  /* iOS */
+		.unstyle-auto-detected-links *,
+		.aBn {
+			border-bottom: 0 !important;
+			cursor: default !important;
+			color: inherit !important;
+			text-decoration: none !important;
+			font-size: inherit !important;
+			font-family: inherit !important;
+			font-weight: inherit !important;
+			line-height: inherit !important;
+		}
+
+		/* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
+		.a6S {
+		   display: none !important;
+		   opacity: 0.01 !important;
+	   }
+	   /* If the above doesn't work, add a .g-img class to any image in question. */
+	   img.g-img + div {
+		   display: none !important;
+	   }
+
+	   /* What it does: Prevents underlining the button text in Windows 10 */
+		.button-link {
+			text-decoration: none !important;
+		}
+		a img{
+			border: none;
+		}
+
+		/* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+		/* Create one of these media queries for each additional viewport size you'd like to fix */
+
+		/* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+		@media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+			.email-container {
+				min-width: 320px !important;
+			}
+		}
+		/* iPhone 6, 6S, 7, 8, and X */
+		@media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+			.email-container {
+				min-width: 375px !important;
+			}
+		}
+		/* iPhone 6+, 7+, and 8+ */
+		@media only screen and (min-device-width: 414px) {
+			.email-container {
+				min-width: 414px !important;
+			}
+		}
+
+	</style>
+	<!-- CSS Reset : END -->
+
+	<!-- Reset list spacing because Outlook ignores much of our inline CSS. -->
+	<!--[if mso]>
+	<style type="text/css">
+		ul,
+		ol {
+			margin: 0 !important;
+		}
+		li {
+			margin-left: 30px !important;
+		}
+		li.list-item-first {
+			margin-top: 0 !important;
+		}
+		li.list-item-last {
+			margin-bottom: 10px !important;
+		}
+	</style>
+	<![endif]-->
+
+	<!-- Progressive Enhancements : START -->
+	<style>
+
+		/* What it does: Hover styles for buttons */
+		.button-td,
+		.button-a {
+			transition: all 100ms ease-in;
+		}
+
+		/* Media Queries */
+		@media screen and (max-width: 600px) {
+
+			.email-container {
+				width: 100% !important;
+				margin: auto !important;
+			}
+        
+         
+            
+
+			/* What it does: Forces elements to resize to the full width of their container. Useful for resizing images beyond their max-width. */
+			.fluid {
+				max-width: 100% !important;
+				height: auto !important;
+				margin-left: auto !important;
+				margin-right: auto !important;
+			}
+
+			/* What it does: Forces table cells into full-width rows. */
+			.stack-column,
+			.stack-column-center {
+				display: block !important;
+				width: 100% !important;
+				max-width: 100% !important;
+				direction: ltr !important;
+			}
+			.third-stack-column-center{
+				width: 33.33%;
+				display: inline-block;
+				text-align: center;
+			}
+			.half-stack-column-center{
+				width: 50%;
+				display: inline-block;
+				text-align: center;
+			}
+			/* And center justify these ones. */
+			.stack-column-center {
+				text-align: center !important;
+			}
+
+			/* What it does: Generic utility class for centering. Useful for images, buttons, and nested tables. */
+			.center-on-narrow {
+				text-align: center !important;
+				display: block !important;
+				margin-left: auto !important;
+				margin-right: auto !important;
+				float: none !important;
+			}
+			table.center-on-narrow {
+				display: inline-block !important;
+			}
+
+			/* What it does: Adjust typography on small screens to improve readability */
+			.email-container p {
+				/*font-size: 16px !important;*/
+			}
+			.email-container p.footer {
+				/*font-size: 11px !important;*/
+			}
+			.spacer{
+				height: 0 !important;
+				width: 0 !important;
+				display: none !important;
+			}
+			.padding-mobile{
+				padding-bottom: 15px !important;
+			}
+			.display-mobile{
+				overflow: visible !important;
+		        float: none !important;
+		        display: block !important;
+		        line-height:100% !important;
+			}
+			.non-display-mobile{
+				display: none !important;
+			}
+			.full-width-img img{
+				width: 100% !important;
+				max-width: 600px !important;
+				height: auto !important;
+			}
+		}
+        
+        
+
+	</style>
+	
+	    
+    
+	<!-- Progressive Enhancements : END -->
+
+	<!--[if (mso)|(mso 16)]>
+	<style type="text/css">
+		a {text-decoration: none;}
+	</style>
+	<![endif]-->
+
+	<!--[if (mso)|(mso 9)]>
+	<style type="text/css">
+		a {text-decoration: none;}
+	</style>
+	<![endif]-->
+
+	<!-- What it does: Makes background images in 72ppi Outlook render at correct size. -->
+	<!--[if gte mso 9]>
+	<xml>
+		<o:OfficeDocumentSettings>
+			<o:AllowPNG/>
+			<o:PixelsPerInch>96</o:PixelsPerInch>
+		</o:OfficeDocumentSettings>
+	</xml>
+	<![endif]-->
+    
+    <!--[if mso]>
+        <noscript>
+        <xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+        </xml>
+        </noscript>
+        <![endif]-->
+    
+	
+
+
+</head>
+
+<body width="100%" style="margin: 0; mso-line-height-rule: exactly; background-color: #ebeff2;">
+<div style="display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">&nbsp;</div>
+<!-- Insert &zwnj;&nbsp; hack after hidden preview text -->
+
+<div style="display: none; max-height: 0px; overflow: hidden;">&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;&nbsp;‌&nbsp;</div>
+
+<div class="dark-mode-bg" style="width: 100%; text-align: left;"><!-- Email Body : START --><!-- Pre-Header : START -->
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="email-container" style="margin: auto; background-color: #ebeff2;" width="600">
+	<tbody>
+		<tr>
+			<td align="center" class="dark-mode-wrapper dm-white-text" style="padding: 15px 30px; font-size: 8pt; color: #333333; border-collapse: collapse; font-family: sans-serif; background-color: #ebeff2;" width="100%">Access the right data and get a clear market picture.<br>
+			View this e-mail in your <a href="{{View_Online}}" style="text-decoration: underline; color:#1e32fa;">web browser</a></td>
+		</tr>
+	</tbody>
+</table>
+<!-- Pre-Header : START -->
+
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="email-container dark-mode-bg" style="margin: auto;" width="600">
+	<tbody>
+        <!-- Logo + Share this email : START -->
+			<tr>
+				<td align="center" valign="top" style="padding: 20px 20px 20px; background-color: #ffffff;" class="dark-mode-wrapper">
+					<table cellspacing="0" cellpadding="0" border="0" width="100%">
+						<tr>
+							<!-- Column 1 : START -->
+							<td valign="middle">
+								<table width="100%" cellspacing="0" cellpadding="0" border="0">
+									<tr>
+										<td style="text-align: left;" class="center-on-narrow">
+											<a href="https://www.iata.org/en/services/statistics/intelligence/cargois?utm_source=Pardot&utm_medium=Email&utm_campaign=BIS007-CargoIS-Shippers-Nurturing W4 W4&utm_content=Logo" target="_blank"><img alt="IATA CargoIS" src="https://go.updates.iata.org/l/123902/2023-03-06/j1pd35/123902/1678140772zDH10jhz/CargoIS_logo.png" style="display: block; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; margin: 0;" width="144"></a>
+										</td>
+									</tr>
+								</table>
+							</td>
+							<!-- Column 1 : END -->
+
+							<!-- Column 2 : START -->
+							<td valign="middle">
+								<table width="100%" cellspacing="0" cellpadding="0" border="0">
+									<tr>
+										<td style="font-family: sans-serif; color: #1e32fa; font-size: 12px; line-height: 16px; padding: 0 10px; text-align: right;">
+											<p style="margin: 0;"><a href="{{AddThis_URL_Email}}" title="Share this email" target="_blank" style="text-decoration: none;">Share this email</a></p>
+										</td>
+									</tr>
+								</table>
+							</td>
+							<!-- Column 2 : END -->
+						</tr>
+					</table>
+				</td>
+			</tr>
+        <!-- Logo  + Share this email : END -->
+        
+        <!-- HEADER : START -->
+		<tr>
+			<td align="center" class="full-width-img dark-mode-bg" style="background-color: #ffffff; padding: 0px 0px; margin: 0; line-height: 0;">
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tbody><!-- Responsive Header : START --><!-- Desktop : START -->
+					<tr>
+						<td align="center" class="non-display-mobile dark-mode-bg" valign="top" width="100%">
+						<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody>
+								<tr>
+									<th class="stack-column-center" valign="middle" width="100%"><a href="https://www.iata.org/en/services/statistics/intelligence/cargois/#tab-6?utm_source=Pardot&utm_medium=Email&utm_campaign=BIS007-CargoIS-Shippers-Nurturing W4 W4&utm_content=Header-Image" target="_blank"><img alt="header" border="0" class="center-on-narrow" height="auto" src="https://go.updates.iata.org/l/123902/2023-03-08/j1pmx2/123902/1678295160n0ObHCRb/header_desktop.png" style="width: 600px; -ms-interpolation-mode: bicubic;" width="600"></a></th>
+								</tr>
+							</tbody>
+						</table>
+						</td>
+					</tr>
+					<!-- Desktop : END --><!--[if !mso]><\!--><!-- Mobile : START -->
+					<tr>
+						<td align="center" class="display-mobile dark-mode-bg" style="padding: 0px 0 0 0; overflow: hidden; float: left; display: none; line-height: 0px;" valign="top" width="100%">
+						<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody>
+								<tr>
+									<th class="stack-column-center" valign="middle" width="100%"><a href="https://www.iata.org/en/services/statistics/intelligence/cargois/#tab-6?utm_source=Pardot&utm_medium=Email&utm_campaign=BIS007-CargoIS-Shippers-Nurturing W4 W4&utm_content=Header-Image" target="_blank"><img alt="mobile header" border="0" class="center-on-narrow" height="auto" src="https://go.updates.iata.org/l/123902/2023-03-08/j1pmx5/123902/1678295160ISVzmsnF/header_mobile.png" style="width: 600px; -ms-interpolation-mode: bicubic;" width="600"></a></th>
+								</tr>
+							</tbody>
+						</table>
+						</td>
+					</tr>
+					<!-- Mobile : END --><!-- <![endif]--><!-- Responsive Header : END -->
+				</tbody>
+			</table>
+			</td>
+		</tr>
+		<!-- HEADER : END -->
+        
+        <!-- Header 1 + Text : START -->
+		<tr>
+			<td class="dark-mode-wrapper" style="padding: 20px 30px 20px; font-family: sans-serif; font-size: 14px; line-height: 16px; color: #000000; background-color: #ffffff;">
+			<p class="dm-white-text" style="margin: 0;">CargoIS is an innovative benchmarking tool that helps many businesses like yours optimize their shipping strategies and improve negotiations with their shipping partners.<br><br>Shippers and manufacturers report up to <b>50% savings</b> on shipping after using CargoIS.<br><br>Want to learn more about CargoIS and how it can create a more efficient, cost-effective shipping strategy for your business?<br><br><span style="font-size: 18px; line-height: 18px; color: blue;">Let’s book a call.</span><br><br>See the full scope of CargoIS’s capabilities.  Learn how to customize the tool to your specific business requirements.<br><br>Our experts will be happy to tour the solution and show you the suite of features helping shippers and manufacturers improve their shipping processes while saving time and money.</p>
+			</td>
+		</tr>
+		<!-- Header 1 + Text : END -->
+        
+        <!-- Full Size Banner : START -->
+		<tr>
+			<td align="center" class="full-width-img dark-mode-wrapper" style="background-color: #ffffff; padding: 0px 0px;"><a href="https://www.iata.org/en/services/statistics/intelligence/cargois/#tab-6?utm_source=Pardot&utm_medium=Email&utm_campaign=BIS007-CargoIS-Shippers-Nurturing W4 W4&utm_content=Banner" target="_blank"><img align="center" alt="SCHEDULE CALL" border="0" class="g-img" src="https://go.updates.iata.org/l/123902/2023-03-08/j1pmx8/123902/1678295161YKiF65oF/banner.png" style="width: 600px; max-width: 600px; background: #dddddd; margin: auto;" width="600"></a></td>
+		</tr>
+		<!-- Full Size Banner : END -->
+        
+        <!-- Footer : START -->
+		<tr>
+			<td class="dm-footer-bg" style="background-color: #000000; padding: 30px 30px;">
+			<table border="0" cellpadding="0" cellspacing="0" width="100%">
+				<tbody>
+					<tr>
+						<td align="center" style="color: #ffffff; text-align: center; font-family: sans-serif; font-size: 12px; color: #ffffff;" valign="top">
+						<table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody>
+								<tr><!-- Column 1 : START -->
+									<th class="stack-column-center" style="text-align: center; padding: 0 0 15px;" valign="middle" width="70%">
+									<table border="0" cellpadding="0" cellspacing="0" width="100%">
+										<tbody>
+											<tr><!-- Column 1 : START -->
+												<td valign="middle" width="50%">
+												<table border="0" cellpadding="0" cellspacing="0" style="float: left;">
+													<tbody>
+														<tr>
+															<td class=""><img alt="Subscription Icon" height="23" src="https://go.updates.iata.org/l/123902/2019-02-20/82vzz5/123902/281186/ManageSubscription_Icon.png" width="23"></td>
+															<td style="padding: 0 15px; font-family: sans-serif; font-size: 12px;" class="">
+															<p style="margin: 0;"><a href="{{EmailPreferenceCenter_340}}" style="color: #ffffff; text-decoration: none;" target="_blank" title="Manage Subscriptions">Manage subscriptions</a></p>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												</td>
+												<!-- Column 1 : END --><!-- Column 2 : START -->
+												<td valign="middle" width="50%">
+												<table border="0" cellpadding="0" cellspacing="0">
+													<tbody>
+														<tr>
+															<td class=""><img alt="Share Icon" height="20" src="https://go.updates.iata.org/l/123902/2019-02-20/82vzz3/123902/281182/ShareThisEmail_Icon.png" width="13"></td>
+															<td style="padding: 0 15px; font-family: sans-serif; font-size: 12px;" class="">
+															<p style="margin: 0;"><a href="{{AddThis_URL_Email}}" style="color: #ffffff; text-decoration: none;" target="_blank" title="Share this email">Share this email</a></p>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												</td>
+												<!-- Column 2 : END -->
+											</tr>
+										</tbody>
+									</table>
+									</th>
+									<!-- Column 1 : END --><!-- Column 2 : START -->
+									<th class="stack-column-center" style="padding: 0 0 15px;" valign="middle" width="30%">
+									<table border="0" cellpadding="0" cellspacing="0" width="100%">
+										<tbody>
+											<tr>
+												<td class="center-on-narrow" style="padding: 0; text-align: right;"><a href="https://www.twitter.com/iata" style="text-decoration: none;" target="_blank" title="Twitter"><img alt="Twitter" height="22" src="https://go.updates.iata.org/l/123902/2022-10-27/hqcv82/123902/1666928491DeUMkkLc/twitter.png" style="display: inline-block; -ms-interpolation-mode: bicubic;" width="22">&nbsp;</a> <a href="https://www.facebook.com/iata.org/" style="text-decoration: none;" target="_blank" title="Facebook"><img alt="Facebook" height="22" src="https://go.updates.iata.org/l/123902/2022-10-27/hqcv88/123902/1666928491S8lMt5g4/facebook.png" style="display: inline-block; -ms-interpolation-mode: bicubic;" width="22">&nbsp;</a> <a href="https://www.instagram.com/iata_official/?hl=en" style="text-decoration: none;" target="_blank" title="Instagram"><img alt="Instagram" height="22" src="https://go.updates.iata.org/l/123902/2022-10-27/hqcv85/123902/1666928491A48uOauQ/instagram.png" style="display: inline-block; -ms-interpolation-mode: bicubic;" width="22">&nbsp;</a> <a href="https://www.linkedin.com/company/international-air-transport-association-iata/" style="text-decoration: none;" target="_blank" title="LinkedIn"><img alt="LinkedIn" height="22" src="https://go.updates.iata.org/l/123902/2022-10-27/hqcv8c/123902/1666928491jlEPQHtR/linkedin.png" style="display: inline-block; -ms-interpolation-mode: bicubic;" width="22">&nbsp;</a> <a href="https://www.youtube.com/@IATAtv" style="text-decoration: none;" target="_blank" title="YouTube"><img alt="YouTube" height="22" src="https://go.updates.iata.org/l/123902/2022-10-27/hqcv8g/123902/1666928491ZwzC4992/youtube.png" style="display: inline-block; -ms-interpolation-mode: bicubic;" width="22"></a></td>
+											</tr>
+										</tbody>
+									</table>
+									</th>
+									<!-- Column 2 : END -->
+								</tr>
+							</tbody>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="font-family: sans-serif; font-size: 24px; color: #ffffff; padding: 15px 0;" class="">
+						<p style="margin: 0;">We represent, lead and serve the airline industry</p>
+						</td>
+					</tr>
+					<tr>
+						<td style="font-family: sans-serif; font-size: 12px; color: #ffffff;" class=""><a href="https://www.iata.org/about/Pages/index.aspx?utm_source=Pardot&utm_medium=Email&utm_campaign=BIS007-CargoIS-Shippers-Nurturing W4" style="color: #ffffff; text-decoration: none; margin-right: 5px;" target="_blank">About Us</a> | <a href="https://www.iata.org/en/programs?utm_source=Pardot&utm_medium=Email&utm_campaign=BIS007-CargoIS-Shippers-Nurturing W4" style="color: #ffffff; text-decoration: none; margin: 0 5px;" target="_blank">Programs &amp; Policy</a> | <a href="https://www.iata.org/services/Pages/index.aspx?utm_source=Pardot&utm_medium=Email&utm_campaign=BIS007-CargoIS-Shippers-Nurturing W4" style="color: #ffffff; text-decoration: none; margin: 0 5px;" target="_blank">Services</a> | <a href="https://www.iata.org/training/Pages/index.aspx?utm_source=Pardot&utm_medium=Email&utm_campaign=BIS007-CargoIS-Shippers-Nurturing W4" style="color: #ffffff; text-decoration: none; margin: 0 5px;" target="_blank">Training</a> | <a href="https://www.iata.org/events/Pages/index.aspx?utm_source=Pardot&utm_medium=Email&utm_campaign=BIS007-CargoIS-Shippers-Nurturing W4" style="color: #ffffff; text-decoration: none; margin: 0 5px;" target="_blank">Events</a> | <a href="https://www.iata.org/pressroom/Pages/index.aspx?utm_source=Pardot&utm_medium=Email&utm_campaign=BIS007-CargoIS-Shippers-Nurturing W4" style="color: #ffffff; text-decoration: none; margin-left: 5px;" target="_blank">Pressroom</a></td>
+					</tr>
+					<tr>
+						<td style="font-family: sans-serif; font-size: 11px; color: #ffffff; padding: 15px 0 0;" class="">
+						<p style="margin: 0;">IMPORTANT PRIVACY INFORMATION. The International Air Transport Association (IATA) does not sell or rent your email address to any third party. You received this email message due to your membership, participation or interest in IATA. IATA sends various communications and special announcements regarding products and services that we feel may be of interest to you.<br>
+						<br>
+						© Copyright {{{dynamic_content_1388}}}. All rights reserved.</p>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" style="color: #ffffff; text-align: left;" valign="top">
+						<table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody>
+								<tr><!-- Column 1 : START -->
+									<th class="stack-column-center" style="padding: 15px 0 0;" valign="bottom" width="50%">
+									<table border="0" cellpadding="0" cellspacing="0" width="100%">
+										<tbody>
+											<tr>
+												<td style="font-family: sans-serif; font-size: 11px; color: #ffffff;" class="">
+												<p style="margin: 0; text-align: left;">International Air Transport Association (IATA)<br>
+												800 Square Victoria, Montreal, H4Z 1M1, Canada</p>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									</th>
+									<!-- Column 1 : END --><!-- Column 2 : START -->
+									<th class="stack-column-center padding-mobile" style="padding: 15px 0 0;" valign="bottom" width="30%">
+									<table border="0" cellpadding="0" cellspacing="0">
+										<tbody>
+											<tr>
+												<td class="center-on-narrow" style="font-family: sans-serif; font-size: 12px; color: #ffffff;">
+												<p style="margin: 0;"><a href="https://www.iata.org/Pages/privacy.aspx?utm_source=Pardot&utm_medium=Email&utm_campaign=BIS007-CargoIS-Shippers-Nurturing W4" style="color: #ffffff; text-decoration: none;" target="_blank" title="Privacy">Privacy</a> | <a href="https://www.iata.org/Pages/terms.aspx?utm_source=Pardot&utm_medium=Email&utm_campaign=BIS007-CargoIS-Shippers-Nurturing W4" style="color: #ffffff; text-decoration: none;" target="_blank" title="Legal">Legal</a> | <a href="https://www.iata.org/en/contact-support/" style="color: #ffffff; text-decoration: none;" target="_blank" title="Legal">Contact Us</a></p>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									</th>
+									<!-- Column 2 : END --><!-- Column 3 : START -->
+									<th class="stack-column-center" style="text-align: right;" valign="bottom" width="20%">
+									<table border="0" cellpadding="0" cellspacing="0" width="100%">
+										<tbody>
+											<tr>
+												<td class="center-on-narrow" style="padding: 0; text-align: right;"><a href="https://www.iata.org?utm_source=Pardot&utm_medium=Email&utm_campaign=BIS007-CargoIS-Shippers-Nurturing W4" target="_blank" title="IATA"><img alt="IATA" height="42" src="https://go.updates.iata.org/l/123902/2022-10-27/hqcv7k/123902/1666927387rLZdpPMS/Logo_IATA.png" style="display: inline-block; -ms-interpolation-mode: bicubic;" width="65"></a></td>
+											</tr>
+										</tbody>
+									</table>
+									</th>
+									<!-- Column 3 : END -->
+								</tr>
+							</tbody>
+						</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+		</tr>
+		<!-- Email Footer : END -->
+	</tbody>
+</table>
+<!-- Email Body : END --><!--[if mso | IE]>
+	</td>
+	</tr>
+	</table>
+	<![endif]--></div>
+</body>
+</html>
